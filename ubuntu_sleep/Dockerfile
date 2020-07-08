@@ -1,3 +1,2 @@
 FROM ubuntu
-
-CMD ["sleep","10"]
+ENTRYPOINT ["sleep","10"]

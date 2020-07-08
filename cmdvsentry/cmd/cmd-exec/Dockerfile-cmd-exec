@@ -1,0 +1,3 @@
+FROM alpine:latest
+ENV name john DO
+CMD ["/bin/echo", "Hello $name"]

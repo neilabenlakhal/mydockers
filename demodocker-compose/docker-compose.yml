@@ -1,0 +1,30 @@
+version: "3.8"  # first-level key
+# The version key is mandatory.
+# it is compose file version : V1(legacy), V2 and V3 and NOT docker-compose version
+# check https://docs.docker.com/compose/compose-file/compose-versioning/
+# It’s always the first line at the root of the file.
+# The file has 4 top-level keys: • version • services • networks • volumes
+services:
+ # Top-level services key is where we define the different application services
+ # Compose will deploy each of these services as its own container.
+  web-fe: # second-level key - Service 1: Web front-end 
+    build: . 
+    # Build a new image using the Dockerfile in the current directory
+    command: python app.py 
+    ports:
+    - target: 5000    #inside container
+      published: 5000 #inside host
+    networks: # which network to attach the service’s container to.
+      - counter-net
+    volumes:
+    - type: volume
+      source: counter-vol #volume created in Docker host
+      target: /code #inside the container
+  redis: # second-level key - Service 2: in-memory DB
+     image: "redis:alpine" 
+     networks: 
+       counter-net:
+networks: 
+  counter-net:
+volumes:
+  counter-vol: 

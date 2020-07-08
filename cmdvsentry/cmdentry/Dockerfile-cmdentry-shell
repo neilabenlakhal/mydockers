@@ -1,0 +1,4 @@
+FROM alpine:latest
+ENV name john DO
+ENTRYPOINT ["/bin/echo", "Hello $name"]
+CMD /bin/sh "Jhon $name"

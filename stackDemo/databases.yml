@@ -1,0 +1,15 @@
+---
+version: "3.7"
+services:
+  postgres:
+    image: postgres:11-alpine 
+    environment:
+    POSTGRES_PASSWORD: example
+  mariadb: 
+    image: mariadb:10-bionic
+    environment:
+    MYSQL_ROOT_PASSWORD: example
+  adminer:
+    image: adminer:4
+    ports:
+      - 8080:8080

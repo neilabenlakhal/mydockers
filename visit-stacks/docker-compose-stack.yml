@@ -1,0 +1,16 @@
+---
+version: "3.8"
+services:
+  #redis-server: 
+    #image: "redis"
+  node-app: 
+    #build: . not supported with docker stack  deploy
+    #image must be in a registry : local registry, dockerhub, aws etc...
+    image: "neilabenlakhal/node-app"
+    ports:
+      - "4001:8081"
+    deploy:
+      replicas: 2  # downscale
+      #  You should note that the node-app service really doesn’t work 
+      #  well when multiple replicas are running. 
+      #  I'm using it here for illustrative purposes only. 
